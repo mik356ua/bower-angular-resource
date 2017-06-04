@@ -525,7 +525,7 @@ angular.module('ngResource', ['ng']).
         };
 
         forEach(actions, function(action, name) {
-          var hasBody = /^(POST|PUT|PATCH)$/i.test(action.method);
+          var hasBody = action.hasBody === true || (action.hasBody !== false && /^(POST|PUT|PATCH)$/i.test(action.method));
 
           Resource[name] = function(a1, a2, a3, a4) {
             var params = {}, data, success, error;
